@@ -19,7 +19,7 @@
 
 
 
-  <script language="javascript" src="./javascript/login.js"></script>
+  
   <link language="stylesheet" src="./css/cadastro-login.css"></link>
   
 </head>
@@ -140,7 +140,7 @@
                             <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label class="col-form-label" for="Name">Nome</label>
-                                <input type="email" class="form-control" type="text">
+                                <input type="text" class="form-control" type="text" id="txtNome">
                               </div>
                             </div>
                             <div class="form-row">
@@ -149,7 +149,7 @@
                                 <input type="password" class="form-control" type="text">
                               </div>
                             </div>                            
-                            <button type="submit" class="btn btn-primary" id="ButtonLogin" style="margin-top: 5px;">Entrar</button>
+                            <button type="submit" class="btn btn-primary" onclick="validacao()" id="ButtonLogin" style="margin-top: 5px;">Entrar</button>
                             <p><a href="./esqueci.html" target="new">Esqueci minha Senha</a></p>
                           </form>
                         </div>
@@ -190,3 +190,4 @@
 </body>
 
 </html>
+
