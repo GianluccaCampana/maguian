@@ -1,47 +1,90 @@
 var reNome = /^[A-z]{3,100}/;
 var reSenha = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 var reEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+var reTelefone = /^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/;
+
 
 function validacao() {
 
   //Validação do nome
   if (!reNome.test(inputNome.value)) {
     alert("Nome inválido");
-    inputNome.focus();
+  
+    inputNome.value = "";
+    inputSenha.value = "";
+    inputSenhaConfiirmacao.value = "";
+    inputEmail.value = "";
+    inputCPF.value = "";
+    inputTelefone.value="";
     return false
   }
 
   //Validação da senha
   if (!reSenha.test(inputSenha.value)) {
     alert("Senha deve conter pelo menos uma letra maipuscula e minúscula, númeors e no mínimo 8 carcteres");
-    inputSenha.focus();
+   
+    
+    inputNome.value = "";
+    inputSenha.value = "";
+    inputSenhaConfiirmacao.value = "";
+    inputEmail.value = "";
+    inputCPF.value = "";
+    inputTelefone.value="";    
     return false;
   }
 
   //Validação da do confirma senha
   if (inputSenha.value != inputSenhaConfiirmacao.value) {
     alert("Senhas digitadas diferentes");
-    inputSenhaConfiirmacao.focus();
+  
+   
+    inputNome.value = "";
+    inputSenha.value = "";
+    inputSenhaConfiirmacao.value = "";
+    inputEmail.value = "";
+    inputCPF.value = "";
+    inputTelefone.value="";
     return false;
   }
 
   //validacao e-mail
   if (!reEmail.test(inputEmail.value)) {
     alert("E-mail não existe");
-    inputEmail.focus();
+ 
+    inputNome.value = "";
+    inputSenha.value = "";
+    inputSenhaConfiirmacao.value = "";
+    inputEmail.value = "";
+    inputCPF.value = "";
+    inputTelefone.value="";    
     return false;
   }
 
   //validação CPF
   if (!isValidCPF(inputCPF.value)) {
     alert("CPF Inválido");
-    inputCPF.focus();
+   
+    inputNome.value = "";
+    inputSenha.value = "";
+    inputSenhaConfiirmacao.value = "";
+    inputEmail.value = "";
+    inputCPF.value = "";
+    inputTelefone.value="";    
     return false;
    
   }
 
-
-
+  if(!reTelefone.test(inputTelefone.value)){
+    alert("Telefone inválido");
+   
+    inputNome.value = "";
+    inputSenha.value = "";
+    inputSenhaConfiirmacao.value = "";
+    inputEmail.value = "";
+    inputCPF.value = "";
+    inputTelefone.value="";    
+    return false;
+  }
 
 }
 
