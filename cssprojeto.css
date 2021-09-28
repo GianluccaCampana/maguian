@@ -1,19 +1,7 @@
-#nossodrop { 
-    font-size: medium;
-
-};
-    
-#pe{
-
-}
-
-
-
 
 
 #img  {
     height: 70%vh;
-
     left: 20%;
     margin-top: 2%;
 }
@@ -124,6 +112,10 @@ ul, ol {
 
 }
 
+#cards-pag {
+    width: 20rem;
+}
+
 #descricao{
     padding-left: 10px;
 }
@@ -145,7 +137,7 @@ ul, ol {
     height: 70%vh;  
     position: absolute;
     left: 10%;
-    margin-top: 2%;
+    margin-top: 2%; }
 }
 
 
