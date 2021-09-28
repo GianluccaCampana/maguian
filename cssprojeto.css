@@ -13,8 +13,8 @@
 
 #img  {
     height: 70%vh;
-    position: relative;
-    left: 45%;
+
+    left: 20%;
     margin-top: 2%;
 }
 
@@ -138,6 +138,14 @@ ul, ol {
 	border: solid 2px white;	
 	padding: 10px;
 	box-shadow: 5px 10px 8px 10px black;
+}
+
+@media screen and (min-width: 1336px) and (min-width: 0px) {
+    #img  {
+    height: 70%vh;  
+    position: absolute;
+    left: 10%;
+    margin-top: 2%;
 }
 
 
