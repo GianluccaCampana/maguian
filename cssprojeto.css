@@ -115,6 +115,16 @@ ul, ol {
 	box-shadow: 5px 10px 8px 10px black;
 }
 
+#box-cadastro{
+    width:50%;
+	height: 50vh;
+	margin-right:25%;
+	margin-left:25%;
+	border: solid 2px white;	
+	padding: 10px;
+	box-shadow: 5px 10px 8px 10px black;
+}
+
 @media screen and (min-width: 1336px) and (min-width: 0px) {
     #img  {
     height: 70%vh;  

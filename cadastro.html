@@ -79,40 +79,46 @@
 
 <body>
   
-  <form id="box" class="row g-2">
-    <div class="col-10">
-      <label for="inputNome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="inputNome" placeholder="Digite o seu nome" required>
-    </div>
-    <div class="col-10">
-      <label for="inputEmail" class="form-label">E-mail</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder="Digite seu e-mail para cadastro" required>
-    </div>
-    <div class="col-md-5">
-      <label for="inputSenha" class="form-label">Senha</label>
-      <input type="password" class="form-control" id="inputSenha" placeholder="Digite sua senha" required>
-    </div>
-    <div class="col-md-5">
-      <label for="inputSenha" class="form-label">Confirma Senha</label>
-      <input type="password" class="form-control" id="inputSenhaConfiirmacao" placeholder="Digite sua senha novamente"
-        required>
-    </div>
+  <div style="padding-top: 5%;">
 
-    <div class="col-3">
-      <label for="inputCPF" class="form-label">CPF</label>
-      <input type="text" class="form-control" id="inputCPF" SIZE=14 MAXLENGTH=14 required>
-    </div>
-    <div class="col-3">
-      <label for="inputTelefone" class="form-label">Telefone</label>
-      <input type="tel" class="form-control" id="inputTelefone" placeholder="(XX) XXXXX-XXXX" >
-    </div>
+    <form id="box-cadastro" class="row g-2">
+      <div class="col-10">
+        <label for="inputNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNome" placeholder="Digite o seu nome" required>
+      </div>
+      <div class="col-10">
+        <label for="inputEmail" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Digite seu e-mail para cadastro" required>
+      </div>
+      <div class="col-md-5">
+        <label for="inputSenha" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="inputSenha" placeholder="Digite sua senha" required>
+      </div>
+      <div class="col-md-5">
+        <label for="inputSenha" class="form-label">Confirma Senha</label>
+        <input type="password" class="form-control" id="inputSenhaConfiirmacao" placeholder="Digite sua senha novamente"
+          required>
+      </div>
+  
+      <div class="col-3">
+        <label for="inputCPF" class="form-label">CPF</label>
+        <input type="text" class="form-control" placeholder="XXX.XXX.XXX-XX" id="inputCPF" SIZE=14 MAXLENGTH=14 required>
+      </div>
+      <div class="col-3">
+        <label for="inputTelefone" class="form-label">Telefone</label>
+        <input type="tel" class="form-control" id="inputTelefone" placeholder="(XX) XXXXX-XXXX" >
+      </div>
+  
+      <div class="col-12">
+        <button type="submit" class="btn btn-secondary" onclick="validacao()">Finallizar Cadastro</button>
+      </div>
+      
+    </form>
 
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary" onclick="validacao()">Finallizar Cadastro</button>
-    </div>
-    
-  </form>
+  </div>
 </body>
+
+
 <footer class="section footer-classic context-dark bg-image" style="background-color: #292b2c;">
   <div class="container" style="margin-top: 30%;">
     <div class="row row-30">
