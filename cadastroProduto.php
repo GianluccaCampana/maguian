@@ -95,39 +95,46 @@
   
   <div style="padding-top: 5%;">
 
-    <form id="box-cadastro" class="row g-2">
+    <form id="box-cadastro" class="row g-2" action="cadastroProduto.php" method="post">
       <div class="col-10">
-        <label for="inputNome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="inputNome" placeholder="Digite o seu nome" required>
+        <label for="nome" class="form-label">Titulo Do produto</label>
+        <input name="titulo" type="text" class="form-control" id="titulo" placeholder="Digite o titulo do produto" required>
       </div>
       <div class="col-10">
-        <label for="inputEmail" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Digite seu e-mail para cadastro" required>
+        <label for="descricao" class="form-label">Descrição</label><br>
+        <textarea id="descricao" name="descricao" rows="5" cols="117" placeholder="Digite a descrição do produto aqui..." required></textarea>
+      </div>
+      <div class="col-10">
+        <label for="categoria" class="form-label">Categoria</label>
+        <input name="categoria" type="text" class="form-control" id="categoria" placeholder="Digite a categoria do produto" required>
+      </div>    
+      <div class="col-md-5">
+        <label for="preco" class="form-label">Preço</label>
+        <input name="preco" type="number" class="form-control" id="preco" placeholder="Digite o preço do produto" required>
       </div>
       <div class="col-md-5">
-        <label for="inputSenha" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="inputSenha" placeholder="Digite sua senha" required>
-      </div>
-      <div class="col-md-5">
-        <label for="inputSenha" class="form-label">Confirma Senha</label>
-        <input type="password" class="form-control" id="inputSenhaConfiirmacao" placeholder="Digite sua senha novamente"
-          required>
+        <label for="precoPromocao" class="form-label">Preço promocional</label>
+        <input name="precoPromocao" type="number" class="form-control" id="precoPromocao" placeholder="Digite o preço promocional do produto">
       </div>
   
       <div class="col-3">
-        <label for="inputCPF" class="form-label">CPF</label>
-        <input type="text" class="form-control" placeholder="XXX.XXX.XXX-XX" id="inputCPF" SIZE=14 MAXLENGTH=14 required>
+        <label for="estoque" class="form-label">Quantidade em Estoque</label>
+        <input name="estoque" type="number" class="form-control"  id="estoque"  required>
       </div>
+
       <div class="col-3">
-        <label for="inputTelefone" class="form-label">Telefone</label>
-        <input type="tel" class="form-control" id="inputTelefone" placeholder="(XX) XXXXX-XXXX" >
+        <label for="marca" class="form-label">Marca</label>
+        <input name="marca" type="text" class="form-control" id="marca" required>
       </div>
   
       <div class="col-12">
-        <button type="submit" class="btn btn-secondary" onclick="validacao()">Finallizar Cadastro</button>
+        <button  name="bt1" class="btn btn-secondary" >Finalizar Cadastro</button>
       </div>
-      
+
+      <?php if(isset($_POST["bt1"])) inserir();?>
     </form>
+
+   
 
   </div>
 </body>
@@ -178,22 +185,27 @@
   </div>
 </footer>
 
-<script>
-  $(document).ready(function () {
-    var $seuCampoCpf = $("#inputCPF");
-    $seuCampoCpf.mask('000.000.000-00', {
-      reverse: true
-    });
-  });
 
-  $('#inputTelefone').mask('(00) 0000-00009');
-  $('#inputTelefone').blur(function (event) {
-    if ($(this).val().length == 15) { // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
-      $('#inputTelefone').mask('(00) 00000-0009');
-    } else {
-      $('#inputTelefone').mask('(00) 0000-00009');
-    }
-  });
-</script>
+
+<?php
+function inserir(){
+    $titulo = $_POST["titulo"];
+    $descricao = $_POST["descricao"];
+    $categoria = $_POST["categoria"];
+    $preco = $_POST["preco"];
+    $precoPromocao = $_POST["precoPromocao"];
+    $estoque = $_POST["estoque"];
+    $marca = $_POST["marca"];
+    $con = new mysqli("localhost", "root", "", "pwt");
+    $sql = "insert into produto(titulo, descricao, categoria, preco, precoPromocao, estoque, marca) values('$titulo', '$descricao', '$categoria', '$preco', '$precoPromocao', '$estoque', '$marca')";
+    if(mysqli_query($con, $sql)){
+        echo "<h3>Produto inserido com sucesso !</h3>";
+        mysqli_close($con);}
+
+        else {
+        "<h4>erro</h4>";
+        mysqli_close($con);}
+  }
+?>
 
 </html>
