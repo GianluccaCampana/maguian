@@ -1,7 +1,7 @@
 var reNome = /^[A-z]{3,100}/;
 var reSenha = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 var reEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-var reTelefone = /^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/;
+//var reTelefone = /^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/;
 
 
 function validacao() {
@@ -74,7 +74,7 @@ function validacao() {
    
   }
 
-  if(!reTelefone.test(inputTelefone.value)){
+ /* if(!reTelefone.test(inputTelefone.value)){
     alert("Telefone inválido");
    
     inputNome.value = "";
@@ -84,7 +84,7 @@ function validacao() {
     inputCPF.value = "";
     inputTelefone.value="";    
     return false;
-  }
+  }*/
 
 }
 

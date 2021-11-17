@@ -95,18 +95,18 @@
   
   <div style="padding-top: 5%;">
 
-    <form id="box-cadastro" class="row g-2">
+    <form method="POST" action="./beckend/CRUD.php" id="box-cadastro" class="row g-2">
       <div class="col-10">
         <label for="inputNome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="inputNome" placeholder="Digite o seu nome" required>
+        <input type="text" class="form-control" id="inputNome"  name="nome" placeholder="Digite o seu nome" required>
       </div>
       <div class="col-10">
         <label for="inputEmail" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Digite seu e-mail para cadastro" required>
+        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Digite seu e-mail para cadastro" required>
       </div>
       <div class="col-md-5">
         <label for="inputSenha" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="inputSenha" placeholder="Digite sua senha" required>
+        <input type="password" class="form-control" id="inputSenha" name="senha" placeholder="Digite sua senha" required>
       </div>
       <div class="col-md-5">
         <label for="inputSenha" class="form-label">Confirma Senha</label>
@@ -116,15 +116,15 @@
   
       <div class="col-3">
         <label for="inputCPF" class="form-label">CPF</label>
-        <input type="text" class="form-control" placeholder="XXX.XXX.XXX-XX" id="inputCPF" SIZE=14 MAXLENGTH=14 required>
+        <input type="text" class="form-control" placeholder="XXX.XXX.XXX-XX" id="inputCPF" name="cpf" SIZE=14 MAXLENGTH=14 required>
       </div>
       <div class="col-3">
         <label for="inputTelefone" class="form-label">Telefone</label>
-        <input type="tel" class="form-control" id="inputTelefone" placeholder="(XX) XXXXX-XXXX" >
+        <input type="tel" class="form-control" id="inputTelefone" name="telefone" placeholder="(XX) XXXXX-XXXX" >
       </div>
   
       <div class="col-12">
-        <button type="submit" class="btn btn-secondary" onclick="validacao()">Finallizar Cadastro</button>
+        <button type="submit" class="btn btn-secondary" onclick="validacao()" name="btCadastro">Finallizar Cadastro</button>
       </div>
       
     </form>
