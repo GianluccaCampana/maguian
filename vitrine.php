@@ -136,7 +136,9 @@
     <div class="col"><a class="social-inner" href="https://www.google.com.br" target="_blank"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
   </div>
 </footer>
+</html>
 
+<!-- beckend -->
 <?php
 function listar(){
 	$con		=	new mysqli("localhost", "root", "", "pwt");
@@ -161,7 +163,7 @@ function listar(){
           if ($preco > $precoPromocao && $precoPromocao !=null){
           echo "<div class='col' >";
           echo  "<div class='card' >";
-          echo "<img src='maguian\Imagens\7.jpg' class='card-img-top' alt='...'> ";
+          echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>";
           echo "    <div class='card-body'>"; 
           echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
           echo "      <p class='card-text'>$descricao</p>";
@@ -175,7 +177,7 @@ function listar(){
           else {
           echo "<div class='col' >";
           echo  "<div class='card' >";
-          echo "<img src='maguian\Imagens\7.jpg' class='card-img-top' alt='...'> ";
+          echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>";
           echo "    <div class='card-body'>"; 
           echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
           echo "      <p class='card-text'>$descricao</p>";
@@ -189,7 +191,7 @@ function listar(){
         else {
           echo "<div class='col' >";
           echo  "<div class='card' >";
-          echo "<img src='maguian\Imagens\7.jpg' class='card-img-top' alt='...'> ";
+          echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'> ";
           echo "    <div class='card-body'>"; 
           echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
           echo "      <p class='card-text'>$descricao</p>";
@@ -203,4 +205,3 @@ function listar(){
 }
 
 
-</html>

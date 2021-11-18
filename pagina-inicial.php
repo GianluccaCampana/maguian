@@ -5,19 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Home</title>
   <link rel="stylesheet" href="cssprojeto.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
-  <!--validação-->
-  <script language="JavaScript" src="javascript/cadastroValidacao.js"></script>
-
-  <!--Jquery-->
-  <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
-  <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
-
 </head>
 
 <header>
@@ -29,7 +20,7 @@
         <font size=100px id="cabeca">MAGUIAN</font>
 
         <!--PESSOINHA-->
-        <a id="pessoinha" href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30">
+        <a id="pessoinha" href="./cadastro.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30">
             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
           </svg></a>
 
@@ -77,9 +68,9 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-secondary" type="submit">Search</button>
+            <form method="post" action="vitrine.php" class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Bucar" name="busca" id="busca" aria-label="Search">
+              <button class="btn btn-outline-secondary" type="submit" name="bt1">Buscar</button>
             </form>
           </div>
         </div>
@@ -90,76 +81,82 @@
 
   </table>
 </header>
+<br>
+<br>
 
 
 <body>
-  <!--efetuar login-->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <div class="content">
-          <div class="main p-3 pt-4">
-            <div class="container">
-              <div class="col-xs-12 col-lg-10 col-xl-8">
-                <div class="card row">
-                  <div class="card-header">
-                    <h4 class="mr-auto mb-0 pr-3">Já tenho cadastro</h4>
-                  </div>
-                  <div class="card-body">
-                    <form method="post" action="login.php">
-                      <div class="form-row">
-                        <div class="form-group col-md-12">
-                          <label class="col-form-label" for="Name">Email</label>
-                          <input type="text" class="form-control" type="text" id="email" name="email">
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-12">
-                          <label class="col-form-label" for="Password">Senha</label>
-                          <input type="password" class="form-control" type="text" id="senha" name="senha">
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary" onclick="validacao()" id="ButtonLogin" style="margin-top: 5px;" name="bt1">Entrar</button>
-                      <p><a href="./esqueci.html" target="new">Esqueci minha Senha</a></p>
-                    </form>
-                    <?php if (isset($_POST["bt1"])) logar(); ?>
-                  </div>
-                </div>
+
+  <table>
+
+    <tr>
+      <!--CARROCEL (Onde o mundo faz de conta A terra é quase o céu) -->
+
+      <div class="container">
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide " data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="camisas-de-times-de-futebol-no-atacado.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5><a href="times-internacionais.html" style="color: white;">Camisa times interacioas</a></h5>
+                <p style="color: white;">Com 25% de desconto</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="foto-carrocel-2.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5><a href="times-nacionais.html" style="color: white;">Camisas de times Campeões Mundias</a></h5>
+                <p style="color: white;">Com 10% de desconto</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="foto-carrocel-3.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5><a href="selecoes.html" style="color: white;">Seleções Campeãs</a></h5>
+                <p style="color: white;">Com 15% de desconto.</p>
               </div>
             </div>
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
+
       </div>
 
-      <!--fazer novo cadastro-->
-      <div class="col-sm">
-        <div class="row">
-          <div class="col-sm">
-            <div class="content">
-              <div class="main p-3 pt-4">
-                <div class="container">
-                  <div class="col-xs-12 col-lg-10 col-xl-8">
-                    <div class="card row">
-                      <div class="card-header">
-                        <h4 class="mr-auto mb-0 pr-3">Ainda não tenho cadastro</h4>
-                      </div>
-                      <div class="card-body">
-                        <form class="col text-center">
-                          <div class="col text-center">
-                            <a href="./cadastro.html" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Cadastrar</a>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    </tr> <br><br>
+
+    <tr>
+      <!--CARTÕES-->
+
+      <body>
+        <img src='C:\xampp\htdocs\maguian\Imagens\1.jpg' class='card-img-top' alt='...'>
+        <h1 style="text-align: center; padding-top: 5%;">PÁGINA INICIAL</h1><BR></BR>
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-compra">
+          <?php listar(); ?>
         </div>
+      </body>
+
       </div>
-    </div>
-  </div>
+    </tr>
+
+    <tr>
+
+    </tr>
+
+  </table>
+
 </body>
 
 <footer class="section footer-classic context-dark bg-image" style="background-color: #292b2c;">
@@ -207,32 +204,72 @@
   </div>
 </footer>
 
+
 </html>
 
+
+
+
 <?php
-
-function logar()
+function listar()
 {
-  $email = $_POST['email'];
-  $senha = $_POST['senha'];
-
-  $con = new mysqli("localhost", "root", "", "pwt");
-  $sql = "select ID, email, senha from usuario where email='$email'
-        and senha=md5('$senha') ";
-
-  $retorno = mysqli_query($con, $sql);
-
-  if ($reg = mysqli_fetch_array($retorno)) {
-    session_start();
-    $_SESSION['email'] = $reg['email'];
-    $_SESSION['nome'] = $reg['nome'];
-    $_SESSION['id'] = $reg['ID'];
-    //header("location: ./pagina-inicial.php");
-    echo "<h3>Login com sucesso</h3>";
+  $con    =  new mysqli("localhost", "root", "", "pwt");
+  if (isset($_POST["bt1"])) {
+    $busca = $_POST["busca"];
+    $sql = "select * from produto where titulo like '%$busca%' or descricao like '%$busca%' order by titulo";
   } else {
-    echo "<h3>Usuário ou senha inválidos</h3>";
+    $sql = "SELECT * FROM `produto`  order by titulo";
+  }
+  $retorno  =  mysqli_query($con, $sql);
+  while ($reg  =   mysqli_fetch_array($retorno)) {
+    $ID =  $reg["ID"];
+    $titulo = $reg["titulo"];
+    $descricao = $reg["descricao"];
+    $preco = $reg["preco"];
+    $precoPromocao = $reg["precoPromocao"];
+    $categoria = $reg["categoria"];
+    $estoque = $reg["estoque"];
+
+    if ($estoque > 0) {
+
+      if ($preco > $precoPromocao && $precoPromocao != null) {
+        echo "<div class='col' >";
+        echo  "<div class='card' >";
+        echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>";
+        echo "    <div class='card-body'>";
+        echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
+        echo "      <p class='card-text'>$descricao</p>";
+        echo "      <s> R$ $preco</s> por : <h6>R$ $precoPromocao</h6>";
+        echo "    </div>";
+        echo "  </div>";
+        echo "</div>";
+        echo "<br>";
+      } else {
+        echo "<div class='col' >";
+        echo  "<div class='card' >";
+        echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>";
+        echo "    <div class='card-body'>";
+        echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
+        echo "      <p class='card-text'>$descricao</p>";
+        echo "      <h6>R$ $preco</h6>";
+        echo "    </div>";
+        echo "  </div>";
+        echo "</div>";
+        echo "<br>";
+      }
+    } else {
+      echo "<div class='col' >";
+      echo  "<div class='card' >";
+      echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'> ";
+      echo "    <div class='card-body'>";
+      echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
+      echo "      <p class='card-text'>$descricao</p>";
+      echo "      <s> R$ $preco</s> PRODUTO ESGOTADO</h6>";
+      echo "    </div>";
+      echo "  </div>";
+      echo "</div>";
+      echo "<br>";
+    }
   }
   mysqli_close($con);
 }
-
-?>

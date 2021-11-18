@@ -199,6 +199,9 @@
   });
 </script>
 
+
+
+
 <?php
 function inserir(){
     $nome = $_POST["nome"];
@@ -209,7 +212,7 @@ function inserir(){
     $con = new mysqli("localhost", "root", "", "pwt");
     $sql = "insert into usuario(email) values('$email')";
     if(mysqli_query($con, $sql)){
-      $sql = "Update usuario set nome='$nome', senha='$senha', cpf='$cpf', telefone='$telefone' where email = '$email'";
+      $sql = "Update usuario set nome='$nome', senha=md5('$senha'), cpf='$cpf', telefone='$telefone' where email = '$email'";
 
         if(mysqli_query($con, $sql)) {
         echo "<h3>Registro inserido com sucesso !</h3>";
