@@ -104,23 +104,24 @@
                       <h4 class="mr-auto mb-0 pr-3">Já tenho cadastro</h4>
                     </div>
                     <div class="card-body">
-                      <form>
+                      <form method="post" action="login.php">
                         <div class="form-row">
                           <div class="form-group col-md-12">
-                            <label class="col-form-label" for="Name">Nome</label>
-                            <input type="text" class="form-control" type="text" id="inputNome">
+                            <label class="col-form-label" for="Name">Email</label>
+                            <input type="text" class="form-control" type="text" id="email" name="email">
                           </div>
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-12">
                             <label class="col-form-label" for="Password">Senha</label>
-                            <input type="password" class="form-control" type="text" id="inputSenha">
+                            <input type="password" class="form-control" type="text" id="senha" name="senha">
                           </div>
                         </div>
                         <button type="submit" class="btn btn-primary" onclick="validacao()" id="ButtonLogin"
-                          style="margin-top: 5px;">Entrar</button>
+                          style="margin-top: 5px;" name="bt1">Entrar</button>
                         <p><a href="./esqueci.html" target="new">Esqueci minha Senha</a></p>
                       </form>
+                      <?php if(isset($_POST["bt1"])) logar();?>
                     </div>
                   </div>
                 </div>
@@ -207,3 +208,39 @@
 </footer>
 
 </html>
+
+
+<?php
+
+function logar(){
+  
+  $con   = new mysqli("localhost", "root", "", "pwt");
+
+  if(empty($_POST['email']) || empty($_POST['senha'])){
+    echo "ta dando errado";
+    header('Location: login.php');
+    exit();
+  }
+  else {
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $senha = mysqli_real_escape_string($con, $_POST['senha']);
+    
+    $query = "select ID from usuario where usuario = '$email' and senha = '$senha'";
+
+    $result = mysqli_query($con, $query);
+
+    $row = myslqi_num_rows($result);
+
+    if($row==1){
+      $_SESSION['email'] = $email;
+      header('Location: pagina-inicial.html');
+      exit();
+    } else {
+      header('Location: login.php');
+      echo "Falha ao logar, senha ou usuario incorreto";
+      exit();
+    }
+
+  }
+}
+
