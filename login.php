@@ -1,3 +1,8 @@
+
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -42,6 +47,11 @@
         <!--LOGO-->
         <a id="logo" href="pagina-inicial.html"> <img src="Screenshot_1.png" alt="Logo"> </a>
       </div>
+
+      <div>
+        
+      </div>
+
     </tr>
 
     <tr>
@@ -211,23 +221,26 @@
 
 <?php
 
+
+
+
 function logar()
 {
   $email = $_POST['email'];
   $senha = $_POST['senha'];
-
+  
   $con = new mysqli("localhost", "root", "", "pwt");
-  $sql = "select ID, email, senha from usuario where email='$email'
+  $sql = "select ID, email, senha, nome from usuario where email='$email'
         and senha=md5('$senha') ";
 
   $retorno = mysqli_query($con, $sql);
 
   if ($reg = mysqli_fetch_array($retorno)) {
-    session_start();
     $_SESSION['email'] = $reg['email'];
     $_SESSION['nome'] = $reg['nome'];
     $_SESSION['id'] = $reg['ID'];
-    //header("location: ./pagina-inicial.php");
+    //header("location: pagina-inicial.php");
+    echo "<script lang='javascript'> alert('Login com sucesso'); window.location.href='pagina-inicial.php';</script>";
     echo "<h3>Login com sucesso</h3>";
   } else {
     echo "<h3>Usuário ou senha inválidos</h3>";
@@ -236,3 +249,4 @@ function logar()
 }
 
 ?>
+

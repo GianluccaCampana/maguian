@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,9 +18,13 @@
   <table>
 
     <tr>
-      <!--CABEÇALHO-->
+
       <div class="p-5 mb-2 bg-dark text-white">
-        <font size=100px id="cabeca">MAGUIAN</font>
+        <font size=100px id="cabeca">MAGUIAN </font>
+
+        <?php if($_SESSION['email']){
+        echo "Seja bem vindo <br> {$_SESSION['nome']} ";
+        } else { echo "Faça o login"; } ?>
 
         <!--PESSOINHA-->
         <a id="pessoinha" href="./cadastro.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30">
@@ -32,7 +39,12 @@
 
         <!--LOGO-->
         <a id="logo" href="pagina-inicial.html"> <img src="Screenshot_1.png" alt="Logo"> </a>
+
+
       </div>
+
+</tr>
+
     </tr>
 
     <tr>
