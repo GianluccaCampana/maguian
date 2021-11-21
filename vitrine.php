@@ -160,7 +160,7 @@ function listar(){
 
         if ($estoque > 0){
 
-          if ($preco > $precoPromocao && $precoPromocao !=null){
+          if ($preco > $precoPromocao && $precoPromocao !=null && $precoPromocao >0 ){
           echo "<div class='col' >";
           echo  "<div class='card' >";
           echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>";
