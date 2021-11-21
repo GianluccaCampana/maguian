@@ -198,3 +198,23 @@
 
 </html>
 
+<?php 
+
+function adicionarTabela(){
+    $codigo = $_POST["ID"];
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    $cpf = $_POST["cpf"];
+    $telefone = $_POST["telefone"];
+    $con = new mysqli("localhost", "root", "", "pwt");
+    $sql = "insert into usuario(nome, email, senha, cpf, telefone) values('$nome', '$email', '$senha', '$cpf', '$telefone')";
+    if(mysqli_query($con, $sql)){
+    echo "<h3>Registro inserido com sucesso !</h3>";
+    } else {
+    echo "<h4>Ocorreu um erro</h4>";
+    }
+    mysqli_close($con);
+    }
+}
+

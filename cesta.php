@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -92,7 +92,7 @@
                 <th scope="col">Preço</th>
               </tr>
               <tr>
-              <th scope="col">1</th>
+              <!--<th scope="col">1</th>
                 <th scope="col">CamisaSlaoq</th>
                 <th scope="col">3</th>
                 <th scope="col">120</th>
@@ -103,8 +103,9 @@
                 <th scope="col"></th>
                 <th scope="col">120</th>
               </tr>
-            </thead>
-            <!--<?php listarCesta(); ?>-->
+            </thead>-->
+            <?php listarCesta();?>
+
             <tbody>
               </tbody>
         </table>
@@ -172,7 +173,7 @@ function listarCesta(){
 	error_reporting(E_ERROR | E_PARSE);
   $id = $_SESSION['id'];
 	$con 	= 	new mysqli("localhost", "root","","pwt");
-	$sql 	= "select p.ID, p.titulo, c.quantidade, p.preco, p.precoPromocao from cesta c, produto p where c.produtoID=p.ID and c.sessionId=30";
+	$sql 	= "select p.ID, p.titulo, c.quantidade, p.preco, p.precoPromocao from cesta c, produto p where c.produtoID=p.ID and c.sessionId=$id";
 	$retorno 	=	mysqli_query($con, $sql);
 	while($reg  =   mysqli_fetch_array($retorno)){
 		$id		=	$reg["ID"];
@@ -181,8 +182,8 @@ function listarCesta(){
 		$preco		=	$reg["preco"];
     $precoPromocao		=	$reg["precoPromocao"];
 
-		echo "<tr><Td>$codigo</td>";
-		echo "<td>$produto</td>";
+		echo "<tr><Td>$id</td>";
+		echo "<td>$titulo</td>";
 		echo "<td>$quantidade</td>";
     echo "<td>$preco</td>";
 		echo "</tr>";
