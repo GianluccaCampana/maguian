@@ -81,43 +81,23 @@
 </header> 
 
 <body>
-    <div class="container" id="box-cesta" style="margin-top:15%;">
-        <table class="table">
+<form method="post" action="cesta.php">  
+  <div class="container"  style="margin-top:15%;" id="box-cesta">
+        <table class="table"  >
             <h1>Cesta</h1><br>
-            <thead>
-              <tr>
-                <th scope="col">Codigo</th>
-                <th scope="col">Produto</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Preço</th>
-              </tr>
-              <tr>
-              <!--<th scope="col">1</th>
-                <th scope="col">CamisaSlaoq</th>
-                <th scope="col">3</th>
-                <th scope="col">120</th>
-              </tr>
-              <tr>
-                <th scope="col">Total</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col">120</th>
-              </tr>
-            </thead>-->
-            <?php listarCesta();?>
-
-            <tbody>
-              </tbody>
+            <?php 
+            listarCesta();
+            if(isset($_POST["limparCesta"])) limparCesta();
+            ?>
         </table>
-        <div class="container">
+        
+        <a href="./vitrine.php" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Continuar Comprando</a>
+        <button class="btn btn-secondary" name="limparCesta">Limpar Cesta</button>
+        
 
-        <button class="btn btn-secondary"  type="button">Continuar Comprando</button>
-        <button class="btn btn-secondary" type="button">Limpar Cesta</button>
-        <button class="btn btn-secondary" type="button">Confirmar Compra</button>   
-
-        </div>     
+           
     </div>
-
+</form>
 </body>
 
 <footer class="section footer-classic context-dark bg-image" style="background-color: #292b2c;">
@@ -175,24 +155,59 @@ function listarCesta(){
 	$con 	= 	new mysqli("localhost", "root","","pwt");
 	$sql 	= "select p.ID, p.titulo, c.quantidade, p.preco, p.precoPromocao from cesta c, produto p where c.produtoID=p.ID and c.sessionId=$id";
 	$retorno 	=	mysqli_query($con, $sql);
-	while($reg  =   mysqli_fetch_array($retorno)){
+  $retorno1 	=	mysqli_query($con, $sql);
+  $total = 0;
+
+  if (mysqli_fetch_array($retorno1))
+	{ echo "<tr>";
+    echo "<th scope='col'>Codigo</th>";
+    echo  "<th scope='col'>Produto</th>";
+    echo  "<th scope='col'>Quantidade</th>";
+    echo  "<th scope='col'>Preço Un.</th>";
+    echo  "<th scope='col'>Total</th>";
+    echo"</tr>";
+    echo"<tr>";
+    while($reg  =   mysqli_fetch_array($retorno)){
 		$id		=	$reg["ID"];
 		$titulo		=	$reg["titulo"];
 		$quantidade		=	$reg["quantidade"];
 		$preco		=	$reg["preco"];
     $precoPromocao		=	$reg["precoPromocao"];
+    if ($preco > $precoPromocao && $precoPromocao !=null && $precoPromocao >0 ) $precoTotal = $precoPromocao * $quantidade;
+		else $precoTotal = $preco * $quantidade;
+    $total = $total + $precoTotal;
 
-		echo "<tr><Td>$id</td>";
+    echo "<tr><Td>$id</td>";
 		echo "<td>$titulo</td>";
 		echo "<td>$quantidade</td>";
-    echo "<td>$preco</td>";
-		echo "</tr>";
-    echo  "<tr>";
-    echo  "<th scope='col'>Total</th>";
-    echo  "<th scope='col'></th>";
-    echo  "<th scope='col'>R$ " . ($preco * $quantidade) ."</th>";
-    echo  "</tr>";
-	}
+    if ($preco > $precoPromocao && $precoPromocao !=null && $precoPromocao >0 )echo "<td>$precoPromocao</td>";
+    else echo "<td>$$preco,00</td>";
+      echo "<td>$$precoTotal,00</td>";
+		  echo "</tr>";
+	  }
 	mysqli_close($con);
+  echo "<tbody>";
+  echo "<tr>";
+  echo "<th scope='col'>Total</th>";
+  echo "<th scope='col'></th>";
+  echo "<th scope='col'></th>";
+  echo "<th scope='col'></th>";
+  echo "<th scope='col'>$$total,00</th>";
+  echo "</tr>";
+  echo "</tbody>";
+  echo "</table>";
+  echo "<button class='btn btn-secondary' type='button' name='confirmarCompra'>Confirmar Compra</button>";
+}else echo "<h1>Cesta Vazia</h1>";
+mysqli_close($con);
 }
+
+function limparCesta(){
+  $id = $_SESSION['id'];
+	$con 	= 	new mysqli("localhost", "root","","pwt");
+	$sql 	= "delete FROM cesta WHERE sessionId=$id";
+	$retorno 	=	mysqli_query($con, $sql);
+  mysqli_close($con);
+}
+
+
 ?>

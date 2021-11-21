@@ -125,7 +125,7 @@
                           <input type="password" class="form-control" type="text" id="senha" name="senha">
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary" onclick="validacao()" id="ButtonLogin" style="margin-top: 5px;" name="bt1">Entrar</button>
+                      <button type="submit" class="btn btn-secondary" onclick="validacao()" id="ButtonLogin" style="margin-top: 5px;" name="bt1">Entrar</button>
                       <p><a href="./esqueci.html" target="new">Esqueci minha Senha</a></p>
                     </form>
                     <?php if (isset($_POST["bt1"])) logar(); ?>
@@ -152,7 +152,7 @@
                       <div class="card-body">
                         <form class="col text-center">
                           <div class="col text-center">
-                            <a href="./cadastro.html" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">Cadastrar</a>
+                            <a href="./cadastro.html" class="btn btn-secondary " tabindex="-1" role="button" aria-disabled="true">Cadastrar</a>
                           </div>
                         </form>
                       </div>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -87,64 +88,14 @@
       <tr> <!-- DETALHE DO PRODUTO-->
         
         
-        <form id="box">
+        <form id="box" method="post" action="produto-detalhe.php">
             <div class="row">
-                <div class="col">
-                    <img src="https://static.saopaulomania.com.br/produtos/camisa-sao-paulo-i-2122-sn-torcedor-adidas-masculina/24/NQQ-7791-024/NQQ-7791-024_zoom1.jpg?ts=1616176960&ims=544x" id="img"  > 
-                </div>
-                
-                <div class="col">
-                    <p> <font size=5px id="camisaSP">Camisa São Paulo 2021</font></p>
-                    <b> <font size=4px id="camisaSP">R$ 279,99</font></b><br>
-                    até 7x de R$ 40,00
-                    <br></br>
-                    Cores: branco e Vermelho
-                    <br></br>
-                    <label></label>Tamanhos <br>
-                    <input type="radio" id="op1" name="receber" /> PP 
-                    <input type="radio" id="op2" name="receber" /> P
-                    <input type="radio" id="op3" name="receber" /> M
-                    <input type="radio" id="op4" name="receber" /> G
-                    <input type="radio" id="op5" name="receber" /> GG
-                    <br></br>
-                    <button class="btn btn-secondary"  type="button">Comprar</button>
-                    <br></br>
-                    <p> <font size=3px id="camisaSP">Detalhes:</font></p>
-                    <label>nome:</label>
-                    Camisa São Paulo I 21/22 s/n° Torcedor Adidas Masculina
-                    <br>
-                    <label>Gênero:</label>
-                    Masculino
-                    <br>
-                    <label>Clube:</label>
-                    Nacional
-                    <br>
-                    <label>Time:</label>
-                    São Paulo SP
-                    <br>
-                    <label>Material:</label>
-                    Poliéster Reciclado
-                    <br>
-                    <label>Manga:</label>
-                    Curta
-                    <br>
-                    <label>Escudo:</label>
-                    Bordado
-                    <br>
-                    <label>Marca:</label>
-                    Adidas
-                    <br>
-
-                    <br></br>
-                </div>
+                <?php mostrarDetalhe();
+                if(isset($_POST["adcionarCarrinho"])) adicionarCarrinho(); ?>
+                ?>
             </div>
-            <br><br><br><br><br>
-
-            <label>Descrição:</label><br>
-            De São Paulo tens o nome! Há 30 anos, Tele Santana comemorava seu primeiro título comandando o Tricolor. Homenageando esse marco que depois se tornaria uma jornada de títulos e glórias, a Adidas lança a Camisa São Paulo Masculina para a temporada 21/22. Semelhante ao manto que os craques usam nas partidas, o modelo é produzido com tecido leve e respirável predominantemente branco com as listras tricolores tradicionais. O escudo do amado clube brasileiro aparece bordado na altura do peito e deixa evidente sua torcida dentro e fora dos estádios.
-            <p></p>
         </form>
-
+      
       </tr>
 
     </table>
@@ -200,21 +151,49 @@
 
 <?php 
 
-function adicionarTabela(){
-    $codigo = $_POST["ID"];
-    $nome = $_POST["nome"];
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-    $cpf = $_POST["cpf"];
-    $telefone = $_POST["telefone"];
-    $con = new mysqli("localhost", "root", "", "pwt");
-    $sql = "insert into usuario(nome, email, senha, cpf, telefone) values('$nome', '$email', '$senha', '$cpf', '$telefone')";
+function adicionarCarrinho(){
+    $con		=	new mysqli("localhost", "root", "", "pwt");
+    $sql = "select * from produto where ID = 7";
+    $retorno	=	mysqli_query($con, $sql);
+    $reg  =   mysqli_fetch_array($retorno);
+    $quantidade = 0;
+    $sessionId = $_SESSION['id'];
+    $produtoId =  $reg["ID"];
+    $quantidade = $quantidade + 1;
+    $sql = "insert into cesta(sessionID, produtoID, quantidade) values('$sessionId', '$produtoId', '$quantidade')";
     if(mysqli_query($con, $sql)){
-    echo "<h3>Registro inserido com sucesso !</h3>";
+    echo "<script lang='javascript'> alert('Produto inserido com na cesta com sucesso');</script>";
     } else {
-    echo "<h4>Ocorreu um erro</h4>";
+      echo "<script lang='javascript'> alert('erro');</script>";
     }
     mysqli_close($con);
     }
-}
 
+  function mostrarDetalhe (){
+    $con		=	new mysqli("localhost", "root", "", "pwt");
+		$sql = "select * from produto where ID = 7";
+	  $retorno	=	mysqli_query($con, $sql);
+    $reg  =   mysqli_fetch_array($retorno);
+    $ID =  $reg["ID"];
+    $titulo = $reg["titulo"];
+    $marca = $reg["marca"];
+    $descricao = $reg["descricao"];
+    $preco = $reg["preco"];
+    $precoPromocao = $reg["precoPromocao"];
+    $categoria = $reg["categoria"];
+    $estoque = $reg["estoque"]; 
+    echo "<div class='col'>";
+    echo  "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>"; 
+    echo "</div>";
+    
+    echo "<div class='col'>";
+    echo    "<p> <font size=5px id='camisaSPca'>$titulo</font></p>";
+    echo    "<b> <font size=4px id='camisaSP'>$$preco,00</font></b><br>";
+    echo    "<button class='btn btn-secondary'  name='adcionarCarrinho'>Adiconar ao carrinho</button>";
+    echo    "<br></br>";
+    echo     "<p> <font size=3px id='camisaSP'><b>Marca:</b></font></p>";
+    echo    "<p>$marca</p>";
+    echo    "<p> <font size=3px id='camisaSP'><b>Descrição:</b></font></p>";
+    echo    "<p>$descricao</p>";
+    echo "</div>";
+  }
