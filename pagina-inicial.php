@@ -1,171 +1,151 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="cssprojeto.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="cssprojeto.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 
 <header>
   <table>
 
-    <tr>
-
-      <div class="p-5 mb-2 bg-dark text-white">
-        <font size=100px id="cabeca">MAGUIAN </font>
-
-        <?php mostrarLogado()?>
-
-        <!--PESSOINHA-->
-        <a id="pessoinha" href="./cadastro.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30">
-            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+      <tr> <!--CABEÇALHO-->
+        <div class="p-5 mb-2 bg-dark text-white" >
+          <font size=100px id="cabeca" >MAGUIAN</font>
+          
+          <!--PESSOINHA-->
+          <a id="pessoinha" href="./login.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30" >
+            <path  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
           </svg></a>
-
-
-        <!--CARRINHO-->
-        <a id="carrinho" href="cesta (1).html"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30">
-            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+          
+        
+          <!--CARRINHO-->
+          <a  id="carrinho" href="cesta.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30"  >
+            <path   d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
           </svg></a>
+          
+          <!--LOGO-->
+          <a id="logo" href="pagina-inicial.php"> <img src="./imagens/logo.png" alt="Logo"> </a>
 
-        <!--LOGO-->
-        <a id="logo" href="pagina-inicial.html"> <img src="Screenshot_1.png" alt="Logo"> </a>
 
-
-      </div>
-
-</tr>
-
-    </tr>
-
-    <tr>
-      <!--NAV BAR-->
-
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="pagina-inicial.html">HOME</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="./times-internacionais.html">Internacionais</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./times-nacionais.html">Nacionais</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./selecoes.html">Seleções</a>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Outros
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Acessórios </a></li>
-                  <li><a class="dropdown-item" href="#">Colecionáveis</a></li>
-                  <li><a class="dropdown-item" href="#">Faixa</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form method="post" action="vitrine.php" class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Bucar" name="busca" id="busca" aria-label="Search">
-              <button class="btn btn-outline-secondary" type="submit" name="bt1">Buscar</button>
-            </form>
           </div>
-        </div>
-      </nav>
 
-    </tr>
+      </tr>
+      
+      <tr><!--NAV BAR-->
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+          <div class="container-fluid">
+            <a class="navbar-brand" href="pagina-inicial.php">HOME</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="./times-internacionais.php">Internacionais</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./times-nacionais.php">Nacionais</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="./selecoes.php">Seleções</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Outros
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Acessórios </a></li>
+                    <li><a class="dropdown-item" href="#">Colecionáveis</a></li>
+                    <li><a class="dropdown-item" href="#">Faixa</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form method="post" action="vitrine.php" class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscar" name="busca" id="busca" aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit" name="bt1">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </nav>
 
+      </tr>
 
-  </table>
+      </table>
 </header>
 <br>
 <br>
 
 
 <body>
+    
+    <table>
 
-  <table>
+        <tr> <!--CARROCEL (Onde o mundo faz de conta A terra é quase o céu) -->
 
-    <tr>
-      <!--CARROCEL (Onde o mundo faz de conta A terra é quase o céu) -->
+            <div class="container">
 
-      <div class="container">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide " data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="./imagens/foto-carrocel-1.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5><a href="times-internacionais.php" style="color: white;">Camisa times internacionais</a></h5>
+                          <p style="color: white;" >Com 25% de desconto</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                        <img src="./imagens/foto-carrocel-2.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5 ><a href="times-nacionais.php" style="color: white;">Camisas de times Campeões Mundias</a></h5>
+                          <p style="color: white;">Com 10% de desconto</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagens/foto-carrocel-3.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5><a href="selecoes.php" style="color: white;">Seleções Campeãs</a></h5>
+                          <p style="color: white;">Com 15% de desconto.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
 
-        <div id="carouselExampleDark" class="carousel carousel-dark slide " data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+  
+        </tr> <br><br>
+        
+        <tr> <!--CARTÕES-->
+
+          <div class="row" id="cards">
+            
+            <H1 style="text-align: center;">Camisas em promoção !</H1>
+
+            <?php listarPaginaInical(); ?>
+
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-              <img src="camisas-de-times-de-futebol-no-atacado.jpg" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h5><a href="times-internacionais.html" style="color: white;">Camisa times interacioas</a></h5>
-                <p style="color: white;">Com 25% de desconto</p>
-              </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="foto-carrocel-2.jpg" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h5><a href="times-nacionais.html" style="color: white;">Camisas de times Campeões Mundias</a></h5>
-                <p style="color: white;">Com 10% de desconto</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="foto-carrocel-3.jpg" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h5><a href="selecoes.html" style="color: white;">Seleções Campeãs</a></h5>
-                <p style="color: white;">Com 15% de desconto.</p>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-
-      </div>
-
-    </tr> <br><br>
-
-    <tr>
-      <!--CARTÕES-->
-
-      <body>
-        <img src='C:\xampp\htdocs\maguian\Imagens\1.jpg' class='card-img-top' alt='...'>
-        <h1 style="text-align: center; padding-top: 5%;">PÁGINA INICIAL</h1><BR></BR>
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-compra">
-          <?php listar(); ?>
-        </div>
-      </body>
-
-      </div>
-    </tr>
-
-    <tr>
-
-    </tr>
-
-  </table>
+        </tr>
+    </table> 
 
 </body>
 
@@ -200,14 +180,14 @@ session_start();
         <ul class="nav-list">
           <li><a href="" target="_blank">Sobre</a></li>
           <li><a href="#" target="_blank">Projetos</a></li>
-          <li><a href="#" target="_blank">Contatos</a></li>
-          <li><a href="#" target="_blank">Preços</a></li>
+          <li><a href="#" target="_blank" >Contatos</a></li>
+          <li><a href="#"target="_blank">Preços</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="row no-gutters social-container">
-    <div class="col"><a class="social-inner" href="https://www.facebook.com/matheus.barnabe.1" target="_blank"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+    <div class="col"><a class="social-inner" href="https://www.facebook.com/matheus.barnabe.1" target="_blank" ><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
     <div class="col"><a class="social-inner" href="https://www.instagram.com/10_vieira/" target="_blank"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
     <div class="col"><a class="social-inner" href="https://twitter.com/Guilherme10vs" target="_blank"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
     <div class="col"><a class="social-inner" href="https://www.google.com.br" target="_blank"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
@@ -216,10 +196,6 @@ session_start();
 
 
 </html>
-
-
-
-
 <?php
 function listar()
 {
@@ -289,4 +265,31 @@ function mostrarLogado(){
   if($_SESSION['email']){
     echo "Seja bem vindo <br> {$_SESSION['nome']} ";
     } else { echo "Faça o login"; } 
+} 
+
+function listarPaginaInical(){
+    $con    =  new mysqli("localhost", "root", "", "pwt");
+    $sql = "select * from produto where precoPromocao > 0 and estoque > 0";
+    $retorno  =  mysqli_query($con, $sql);
+
+    while ($reg  =   mysqli_fetch_array($retorno)) {
+    $ID = $reg["ID"]; 
+    $titulo = $reg["titulo"];
+    $descricao = $reg["descricao"];
+    $preco = $reg["preco"];
+    $precoPromocao = $reg["precoPromocao"];
+
+      echo "<div class='col' >";
+      echo "<div class='card text-white bg-dark mb-4' id='card'>";
+      echo "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>";
+      echo "<div class='card-body'>";
+      echo "<h5 class='card-title'>$titulo</h5>";
+      echo "<h5 class='card-title'>De <s>$$preco,00</s> por $$precoPromocao,00</h5>";
+      echo "<p class='card-text'>$descricao</p>";
+      echo "<a href='#' class='btn btn-secondary'>COMPRE AQUI</a>";
+      echo "</div>";
+      echo "</div>";
+      echo "</div>";
+    }
 }
+?>

@@ -22,40 +22,43 @@
           <font size=100px id="cabeca" >MAGUIAN</font>
           
           <!--PESSOINHA-->
-          <a id="pessoinha" href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30" >
+          <a id="pessoinha" href="./login.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30" >
             <path  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
           </svg></a>
           
-
+        
           <!--CARRINHO-->
-          <a  id="carrinho" href="cesta (1).html"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30"  >
+          <a  id="carrinho" href="cesta.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30"  >
             <path   d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
           </svg></a>
           
           <!--LOGO-->
-          <a id="logo" href="pagina-inicial.html"> <img src="Screenshot_1.png" alt="Logo"> </a>
+          <a id="logo" href="pagina-inicial.php"> <img src="./imagens/logo.png" alt="Logo"> </a>
+
+
           </div>
+
       </tr>
       
       <tr><!--NAV BAR-->
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
           <div class="container-fluid">
-            <a class="navbar-brand" href="pagina-inicial.html">HOME</a>
+            <a class="navbar-brand" href="pagina-inicial.php">HOME</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="./times-internacionais.html">Internacionais</a>
+                  <a class="nav-link" aria-current="page" href="./times-internacionais.php">Internacionais</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./times-nacionais.html">Nacionais</a>
+                  <a class="nav-link" href="./times-nacionais.php">Nacionais</a>
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link" href="./selecoes.html">Seleções</a>
+                  <a class="nav-link" href="./selecoes.php">Seleções</a>
                 </li>
                 
                 <li class="nav-item dropdown">
@@ -69,18 +72,17 @@
                   </ul>
                 </li>
               </ul>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
+              <form method="post" action="vitrine.php" class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscar" name="busca" id="busca" aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit" name="bt1">Buscar</button>
               </form>
             </div>
           </div>
         </nav>
 
       </tr>
-    
-      
-  </table>
+
+      </table>
 </header>
 
 <body>
