@@ -13,6 +13,8 @@
 <header>
   <table>
 
+      
+
       <tr> <!--CABEÇALHO-->
         <div class="p-5 mb-2 bg-dark text-white" >
           <font size=100px id="cabeca" >MAGUIAN</font>
@@ -30,7 +32,7 @@
           
           <!--LOGO-->
           <a id="logo" href="pagina-inicial.php"> <img src="./imagens/logo.png" alt="Logo"> </a>
-
+          
 
           </div>
 
@@ -80,8 +82,7 @@
 
       </table>
 </header>
-<br>
-<br>
+<br><br>
 
 
 <body>

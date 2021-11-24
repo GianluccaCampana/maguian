@@ -90,11 +90,11 @@
       <tr> <!-- DETALHE DO PRODUTO-->
         
         
-        <form id="box" method="post" action="produto-detalhe.php">
+        <form id="box" method="post" >
             <div class="row">
-                <?php mostrarDetalhe();
-                if(isset($_POST["adcionarCarrinho"])) adicionarCarrinho(); ?>
-                ?>
+            <?php mostrarDetalhe();?>    
+ 
+                
             </div>
         </form>
       
@@ -153,49 +153,51 @@
 
 <?php 
 
-function adicionarCarrinho(){
-    $con		=	new mysqli("localhost", "root", "", "pwt");
-    $sql = "select * from produto where ID = 7";
-    $retorno	=	mysqli_query($con, $sql);
-    $reg  =   mysqli_fetch_array($retorno);
-    $quantidade = 0;
-    $sessionId = $_SESSION['id'];
-    $produtoId =  $reg["ID"];
-    $quantidade = $quantidade + 1;
-    $sql = "insert into cesta(sessionID, produtoID, quantidade) values('$sessionId', '$produtoId', '$quantidade')";
-    if(mysqli_query($con, $sql)){
-    echo "<script lang='javascript'> alert('Produto inserido com na cesta com sucesso');</script>";
-    } else {
-      echo "<script lang='javascript'> alert('erro');</script>";
-    }
-    mysqli_close($con);
-    }
-
   function mostrarDetalhe (){
+    error_reporting(E_ERROR | E_PARSE);
+    $ID = $_GET['ID'];
     $con		=	new mysqli("localhost", "root", "", "pwt");
-		$sql = "select * from produto where ID = 7";
-	  $retorno	=	mysqli_query($con, $sql);
-    $reg  =   mysqli_fetch_array($retorno);
-    $ID =  $reg["ID"];
+		$sql = "select * from produto where ID = $ID ";
+    if (mysqli_query($con, $sql)){
+    $retorno	=	mysqli_query($con, $sql);
+    $reg = mysqli_fetch_array($retorno);
     $titulo = $reg["titulo"];
-    $marca = $reg["marca"];
     $descricao = $reg["descricao"];
+    $categoria = $reg["categoria"];
     $preco = $reg["preco"];
     $precoPromocao = $reg["precoPromocao"];
-    $categoria = $reg["categoria"];
     $estoque = $reg["estoque"]; 
+    $marca = $reg["marca"];
     echo "<div class='col'>";
     echo  "<img src='./imagens/$ID.jpg' class='card-img-top' alt='...'>"; 
     echo "</div>";
-    
     echo "<div class='col'>";
     echo    "<p> <font size=5px id='camisaSPca'>$titulo</font></p>";
     echo    "<b> <font size=4px id='camisaSP'>$$preco,00</font></b><br>";
-    echo    "<button class='btn btn-secondary'  name='adcionarCarrinho'>Adiconar ao carrinho</button>";
+    echo    "<button class='btn btn-secondary' name='adcionarCarrinho'>Adiconar ao carrinho</button>";
     echo    "<br></br>";
     echo     "<p> <font size=3px id='camisaSP'><b>Marca:</b></font></p>";
     echo    "<p>$marca</p>";
     echo    "<p> <font size=3px id='camisaSP'><b>Descrição:</b></font></p>";
-    echo    "<p>$descricao</p>";
-    echo "</div>";
+    echo    "<p>$descricao oi </p>";
+    echo "</div>";} 
+
+    if(isset($_POST["adcionarCarrinho"])){
+      $ID = $_GET['ID'];
+      $con		=	new mysqli("localhost", "root", "", "pwt");
+      $sql = "select * from produto where ID = $ID";
+      if (mysqli_query($con, $sql)){
+        $retorno	=	mysqli_query($con, $sql);
+        $reg = mysqli_fetch_array($retorno);
+        $quantidade = 0;
+        $sessionId = $_SESSION['id'];
+        $produtoId =  $reg["ID"];
+        $quantidade = $quantidade + 1;
+        $sql = "insert into cesta(sessionID, produtoID, quantidade) values('$sessionId', '$produtoId', '$quantidade')";
+        if(mysqli_query($con, $sql)) echo "<script lang='javascript'> alert('Produto inserido com na cesta com sucesso');</script>";
+        else echo "<script lang='javascript'> alert('erro');</script>";}
+    }
+
+
+    mysqli_close($con);
   }
