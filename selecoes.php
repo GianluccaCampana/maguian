@@ -174,6 +174,7 @@ function listar()
         echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
         echo "      <p class='card-text'>$descricao</p>";
         echo "      <s> R$ $preco</s> por : <h6>R$ $precoPromocao</h6>";
+        echo " <a href='./produto-detalhe.php?ID=$ID' class='btn btn-secondary'>Comprar</a>";
         echo "    </div>";
         echo "  </div>";
         echo "</div>";
@@ -186,6 +187,7 @@ function listar()
         echo "      <h5 class='card-title'><a  >$titulo</a></h5>";
         echo "      <p class='card-text'>$descricao</p>";
         echo "      <h6>R$ $preco</h6>";
+        echo " <a href='./produto-detalhe.php?ID=$ID' class='btn btn-secondary'>Comprar</a>";
         echo "    </div>";
         echo "  </div>";
         echo "</div>";

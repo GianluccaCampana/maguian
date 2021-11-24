@@ -17,6 +17,8 @@
 <header>
   <table>
 
+      
+
       <tr> <!--CABEÇALHO-->
         <div class="p-5 mb-2 bg-dark text-white" >
           <font size=100px id="cabeca" >MAGUIAN</font>
@@ -34,7 +36,7 @@
           
           <!--LOGO-->
           <a id="logo" href="pagina-inicial.php"> <img src="./imagens/logo.png" alt="Logo"> </a>
-
+          
 
           </div>
 
@@ -86,9 +88,8 @@
 </header>
 
 <body>
-  
-    
 
+<form method="post">
   <div class="container">
     <div class="row">
       <div class="col-sm">
@@ -98,17 +99,19 @@
               <div class="col d-flex justify-content-center">
                 <div class="card row">
                   <div class="card-header">
-                    <h4 class="mr-auto mb-0 pr-3">Informe e-mail cadastrado</h4>
+                    <h4 class="mr-auto mb-0 pr-3">Digite a nova senha </h4>
                   </div>
                   <div class="card-body">
                     <form>
                       <div class="form-row">
                         <div class="form-group col-md-12">
-                          <label class="col-form-label"   for="Email">E-mail</label>
-                          <input type="email" class="form-control" name="email"  type="email">
+                          <label class="col-form-label"   type="password" >Nova senha</label>
+                          <input type="password" class="form-control" type="text" id="NovaSenha" name="senha "type="email">
+                          <label class="col-form-label"   type="password" >Repita a senha</label>
+                          <input type="password" class="form-control" type="text" id="CNovaSenha"  type="email">
                         </div>
                       </div>                     
-                      <button type="submit" class="btn btn-primary" name="bt1"  style="margin-top: 5px;">Entrar</button>                      
+                      <button type="submit" class="btn btn-secondary" id="ButtonLogin" onclick="validarSenha()" style="margin-top: 5px;">Mudar</button>                      
                     </form>
                   </div>
                 </div>
@@ -119,7 +122,7 @@
        </div>
     </div>
   </div>
-
+</form>
 
 </body>
 
@@ -173,33 +176,29 @@
 
 <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
 
-<?php
-function enviarEmail(){
-  $con		=	new mysqli("localhost", "root", "", "pwt");
-	if(isset($_POST["bt1"])) {
-		$email = $_POST["email"];
-		$sql = "select * from usuario where email='$email'";
-    $retorno	=	mysqli_query($con, $sql);
-    while($reg  =   mysqli_fetch_array($retorno)){
-      $ID =  $reg["ID"];
-      $nome = $reg["nome"];
+<script>
+function validarSenha(){
+   NovaSenha = document.getElementById('NovaSenha').value;
+   CNovaSenha = document.getElementById('CNovaSenha').value;
+   if (NovaSenha != CNovaSenha) {
+      alert("SENHAS DIFERENTES!\nFAVOR DIGITAR SENHAS IGUAIS"); 
+   }else{
+      document.FormSenha.submit();
+   }
+}
+</script>
 
-      
-      $para = "to: $email";
-      $mensagem = "<b>Olá $nome <br/> Para criar uma nova senha, clique <a href='http://localhost/maguian/recuperar-senha.php?ID=$ID'>AQUI</a> <b>";
-      
-      $header = "MIME-Version: 1.0\r\n";
-      $header .= "Content-Type: text/html; charset=UTF-8\r\n";
-      $header .= "from: Fatec Teste<fatecpwAds2021@outlook.com>";
-      $header .= "Cc:$de\r\n";
-      
-      $success = mail($para, $mensagem, $header);
-      if($success){	
-        echo "<h3>Um email foi emviado com as intruções de recuperação de senha</h3>";
-      } else {
-        echo "<h3>ocorreu um erro !</h3>";	
-      }	
-      
-    } 
+<?php
+function novaSenha(){
+    $ID = $_GET['ID'];
+    $senha = $_POST['senha'];
+    $con = new mysqli("localhost", "root", "", "pwt");
+    $sql = "Update usuario set senha=md5('$senha') where ID = '$ID'";
+    if(mysqli_query($con, $sql)){
+        echo "<script lang='javascript'> alert('Alteração de senha bem sucedida'); window.location.href='login.php';</script>";
+    } else {
+        echo "<script lang='javascript'> alert('Orreu um erro')</script>";
+    mysqli_close($con);
     }
-    ?>
+  }
+?>
