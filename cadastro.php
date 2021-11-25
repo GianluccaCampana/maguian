@@ -108,11 +108,11 @@
       </div>
       <div class="col-md-5">
         <label for="senha" class="form-label">Senha</label>
-        <input name="senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+        <input name="senha" type="password" class="form-control" id="NovaSenha" placeholder="Digite sua senha" required>
       </div>
       <div class="col-md-5">
         <label for="inputSenha" class="form-label">Confirma Senha</label>
-        <input type="password" class="form-control" id="inputSenhaConfiirmacao" placeholder="Digite sua senha novamente"
+        <input type="password" class="form-control" id="CNovaSenha" placeholder="Digite sua senha novamente"
           required>
       </div>
   
@@ -126,7 +126,7 @@
       </div>
   
       <div class="col-12">
-        <button  name="bt1" class="btn btn-secondary" >Finalizar Cadastro</button>
+        <button  name="bt1" class="btn btn-secondary" onclick="validarSenha()" >Finalizar Cadastro</button>
       </div>
 
       <?php if(isset($_POST["bt1"])) inserir();?>
@@ -199,10 +199,17 @@
       $('#telefone').mask('(00) 0000-00009');
     }
   });
+
+function validarSenha(){
+   NovaSenha = document.getElementById('NovaSenha').value;
+   CNovaSenha = document.getElementById('CNovaSenha').value;
+   if (NovaSenha != CNovaSenha) {
+      alert("SENHAS DIFERENTES!\nFAVOR DIGITAR SENHAS IGUAIS"); 
+   }else{
+      document.FormSenha.submit();
+   }
+}
 </script>
-
-
-
 
 <?php
 function inserir(){

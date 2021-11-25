@@ -147,7 +147,7 @@
                       <div class="card-body">
                         <form class="col text-center">
                           <div class="col text-center">
-                            <a href="./cadastro.html" class="btn btn-secondary " tabindex="-1" role="button" aria-disabled="true">Cadastrar</a>
+                            <a href="./cadastro.php" class="btn btn-secondary " tabindex="-1" role="button" aria-disabled="true">Cadastrar</a>
                           </div>
                         </form>
                       </div>
@@ -215,7 +215,7 @@
 
 
 
-function logar()
+function logar() 
 {
   $email = $_POST['email'];
   $senha = $_POST['senha'];
@@ -230,6 +230,8 @@ function logar()
     $_SESSION['email'] = $reg['email'];
     $_SESSION['nome'] = $reg['nome'];
     $_SESSION['id'] = $reg['ID'];
+    $_SESSION['admin'] = $reg['admin'];
+
     //header("location: pagina-inicial.php");
     echo "<script lang='javascript'> alert('Login com sucesso'); window.location.href='pagina-inicial.php';</script>";
     echo "<h3>Login com sucesso</h3>";

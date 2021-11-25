@@ -83,23 +83,47 @@
 </header>
 
 <body>
-<form method="post" action="cesta.php">  
-  <div class="container"  style="margin-top:15%;" id="box-cesta">
-        <table class="table"  >
-            <h1>Cesta</h1><br>
-            <?php 
-            listarCesta();
-            if(isset($_POST["limparCesta"])) limparCesta();
-            ?>
-        </table>
-        
-        <a href="./vitrine.php" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Continuar Comprando</a>
-        <button class="btn btn-secondary" name="limparCesta">Limpar Cesta</button>
-        
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="content">
+          <div class="main p-3 pt-4">
+            <div class="container">
+              <div class="col d-flex justify-content-center">
+                <div class="card row">
+                  <div class="card-header">
+                    <h4 class="mr-auto mb-0 pr-3">Cesta</h4>
+                  </div>
+                  <div class="card-body">
+                    <form method="post" action="cesta.php"> 
+                      <div class="form-row">
+                        <div class="form-group col-md-12">
+                          <table class="table"  >
+                              <?php 
+                              error_reporting(E_ERROR | E_PARSE);
+                              if ($id = $_SESSION['id'] )listarCesta();
+                              else echo "<h1>Faça login para adicionar os produtos a cesta.</h1>";
+                              if(isset($_POST["limparCesta"])) limparCesta();
+                              ?>
+                          </table>
+                          <a href="./vitrine.php" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Continuar Comprando</a>
+                          <button class="btn btn-secondary" name="limparCesta">Limpar Cesta</button>
+                          <a href='./login.php' class='btn btn-secondary' tabindex='-1' role='button' aria-disabled='true'>Login</a>
+                          </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
 
            
-    </div>
-</form>
+
 </body>
 
 <footer class="section footer-classic context-dark bg-image" style="background-color: #292b2c;">

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,29 +14,33 @@
 <header>
   <table>
 
-      
-
       <tr> <!--CABEÇALHO-->
-        <div class="p-5 mb-2 bg-dark text-white" >
+        <div class=" box p-5 mb-2 bg-dark text-white" >
           <font size=100px id="cabeca" >MAGUIAN</font>
           
           <!--PESSOINHA-->
+          <div class="box">
           <a id="pessoinha" href="./login.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30" >
             <path  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
           </svg></a>
-          
+          </div>
         
           <!--CARRINHO-->
+          <div class="box">
           <a  id="carrinho" href="cesta.php"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-person" viewBox="0 0 30 30"  >
             <path   d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
           </svg></a>
-          
+          </div>
           <!--LOGO-->
+          <div class="box">
           <a id="logo" href="pagina-inicial.php"> <img src="./imagens/logo.png" alt="Logo"> </a>
+          <?php mostrarLogado()?>
+          
+          </div>
           
 
           </div>
-
+      
       </tr>
       
       <tr><!--NAV BAR-->
@@ -58,7 +63,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="./selecoes.php">Seleções</a>
                 </li>
-                
+                <?php cadastroProduto()?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Outros
@@ -143,7 +148,7 @@
             <H1 style="text-align: center;">Camisas em promoção !</H1>
 
             <?php listarPaginaInical(); ?>
-
+            
           </div>
         </tr>
     </table> 
@@ -263,11 +268,11 @@ function listar()
 
 function mostrarLogado(){
   error_reporting(E_ERROR | E_PARSE);  
-  if($_SESSION['email']){
-    echo "Seja bem vindo <br> {$_SESSION['nome']} ";
-    } else { echo "Faça o login"; } 
+  if($_SESSION['nome']){
+    echo " <p style='margin-left:87%; margin-botton:2%'>Bem vindo {$_SESSION['nome']} </p> <a style='margin-left:90%;' href='sair.php'>Clique aqui para sair</a>";
+    } else { echo "<p style='margin-left:90%; margin-botton:2%'>Faça o login</p>"; } 
 } 
-
+ 
 function listarPaginaInical(){
     $con    =  new mysqli("localhost", "root", "", "pwt");
     $sql = "select * from produto where precoPromocao > 0 and estoque > 0";
@@ -287,10 +292,20 @@ function listarPaginaInical(){
       echo "<h5 class='card-title'>$titulo</h5>";
       echo "<h5 class='card-title'>De <s>$$preco,00</s> por $$precoPromocao,00</h5>";
       echo "<p class='card-text'>$descricao</p>";
-      echo "<a href='#' class='btn btn-secondary'>COMPRE AQUI</a>";
+      echo " <a href='./produto-detalhe.php?ID=$ID' class='btn btn-secondary'>Comprar</a>";
       echo "</div>";
       echo "</div>";
       echo "</div>";
     }
 }
+
+function cadastroProduto(){
+  error_reporting(E_ERROR | E_PARSE);  
+  if($_SESSION['admin']){
+  echo "<li class='nav-item'>";
+  echo  "<a class='nav-link' href='./cadastroProduto.php'>Seleções</a>";
+  echo "</li>";
+  }
+}
+
 ?>

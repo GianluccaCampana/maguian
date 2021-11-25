@@ -6,6 +6,8 @@
     margin-top: 2%;
 }
 
+
+
 #cabeca{
     text-align: center;
     font: arial;
@@ -70,19 +72,22 @@ ul, ol {
 }   
 
 #pessoinha{
-    position: absolute; 
+    position: -webkit-sticky;
+    position: sticky;
     top: 58px; 
     left: 90%;
 }
 
 #carrinho{
-    position: absolute; 
+    position: -webkit-sticky;
+    position: sticky; 
     top: 54px; 
     left: 85%;
 }
 
 #logo{
-    position: absolute; 
+    position: -webkit-sticky;
+    position: sticky;
     top: 39px; 
     left: 20px;
 }

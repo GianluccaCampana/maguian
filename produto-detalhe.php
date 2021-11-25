@@ -153,12 +153,12 @@
 
 <?php 
 
-  function mostrarDetalhe (){
-    error_reporting(E_ERROR | E_PARSE);
-    $ID = $_GET['ID'];
-    $con		=	new mysqli("localhost", "root", "", "pwt");
-		$sql = "select * from produto where ID = $ID ";
-    if (mysqli_query($con, $sql)){
+function mostrarDetalhe (){
+  error_reporting(E_ERROR | E_PARSE);
+  $ID = $_GET['ID'];
+  $con		=	new mysqli("localhost", "root", "", "pwt");
+  $sql = "select * from produto where ID = $ID ";
+  if (mysqli_query($con, $sql)){
     $retorno	=	mysqli_query($con, $sql);
     $reg = mysqli_fetch_array($retorno);
     $titulo = $reg["titulo"];
@@ -180,24 +180,39 @@
     echo    "<p>$marca</p>";
     echo    "<p> <font size=3px id='camisaSP'><b>Descrição:</b></font></p>";
     echo    "<p>$descricao oi </p>";
-    echo "</div>";} 
+    echo "</div>";
+  }
 
-    if(isset($_POST["adcionarCarrinho"])){
-      $ID = $_GET['ID'];
-      $con		=	new mysqli("localhost", "root", "", "pwt");
-      $sql = "select * from produto where ID = $ID";
-      if (mysqli_query($con, $sql)){
-        $retorno	=	mysqli_query($con, $sql);
-        $reg = mysqli_fetch_array($retorno);
-        $quantidade = 0;
+  if(isset($_POST["adcionarCarrinho"])){
+    $ID = $_GET['ID'];
+    $con		=	new mysqli("localhost", "root", "", "pwt");
+    $sql = "select * from produto where ID = $ID";
+    if (mysqli_query($con, $sql)){
+      $retorno	=	mysqli_query($con, $sql);
+      $reg = mysqli_fetch_array($retorno);
+      $sessionId = $_SESSION['id'];
+      $produtoId =  $reg["ID"];
+      $sqlp = "select quantidade from cesta where produtoID = $produtoId";
+      $retornop	=	mysqli_query($con, $sqlp);
+      $regp = mysqli_fetch_array($retornop);
+      $quantidade = $regp["quantidade"];
+        if ($quantidade > 0){
         $sessionId = $_SESSION['id'];
-        $produtoId =  $reg["ID"];
-        $quantidade = $quantidade + 1;
+        $quantidade = $regp['quantidade'] + 1;
+        $sql = "update cesta set quantidade = $quantidade where produtoID = $produtoId ";
+        if(mysqli_query($con, $sql)){echo "<script lang='javascript'> alert('Produto inserido com na cesta com sucesso');</script>";
+        }
+        else echo "<script lang='javascript'> alert('erro');</script>";
+      } 
+      
+      else {
+        $quantidade = 1;
         $sql = "insert into cesta(sessionID, produtoID, quantidade) values('$sessionId', '$produtoId', '$quantidade')";
         if(mysqli_query($con, $sql)) echo "<script lang='javascript'> alert('Produto inserido com na cesta com sucesso');</script>";
-        else echo "<script lang='javascript'> alert('erro');</script>";}
+        else echo "<script lang='javascript'> alert('erro');</script>";
+      }
     }
-
-
-    mysqli_close($con);
   }
+   
+  mysqli_close($con);
+}  
